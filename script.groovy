@@ -2,8 +2,7 @@ def build(){
   echo "Building"
 }
 def test(){
-  sh "ls"
-  echo "Testing"
+  echo "Testing" > artefact.txt
 }
 def deploy(){
   echo "Deploying version ${params.VERSION}"
