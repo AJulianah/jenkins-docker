@@ -8,7 +8,10 @@ pipeline{
     }
     stage("Test"){
       steps{
-        echo 'Testing'
+        sh '''
+          cd "/var/lib/jenkins/ivehte-web-test-api"
+          npx playwright test
+        '''
       }
     }
     stage("Deploy"){
