@@ -1,3 +1,5 @@
+def gv
+
 pipeline{
   agent any
   parameters{
@@ -5,6 +7,13 @@ pipeline{
     booleanParam(name: 'executeTests', defaultValue: false, description: '')
   }
   stages{
+    stage("Init"){
+      steps{
+        script{
+          gv = load("script.groovy")
+        }
+      }
+    }
     stage("Build"){
       when{
         expression{
@@ -12,19 +21,17 @@ pipeline{
         }
       }
       steps{
-        echo 'Building'
+        gv.build()
       }
     }
     stage("Test"){
       steps{
-        sh '''
-          cd "/var/lib/jenkins/ivehte-web-test-api"
-        '''
+        gv.test()
       }
     }
     stage("Deploy"){
       steps{
-        echo "Deploying ${params.VERSION}"
+        gv.deploy()
       }
     }
   }
