@@ -35,6 +35,7 @@ pipeline{
       post{
         success{
           echo "Test is success!"
+          archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
         }
         failure{
           echo "Test is failed!"
@@ -54,11 +55,6 @@ pipeline{
         failure{
           echo "Deploy is failed"
         }
-      }
-    }
-    stage("Archive"){
-      steps{
-        archiveArtifacts(artifacts: '**', followSymlinks: false)
       }
     }
   }
