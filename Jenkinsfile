@@ -19,7 +19,6 @@ pipeline{
       steps{
         sh '''
           cd "/var/lib/jenkins/ivehte-web-test-api"
-          npx playwright test
         '''
       }
     }
