@@ -58,7 +58,7 @@ pipeline{
     }
     stage("Archive"){
       steps{
-        archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
+        archiveArtifacts(artifacts: '**', followSymlinks: false)
       }
     }
   }
