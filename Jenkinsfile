@@ -47,6 +47,14 @@ pipeline{
           groovy.deploy()
         }
       }
+      post{
+        success{
+          echo "Deploy is successful"
+        }
+        failure{
+          echo "Deploy is failed"
+        }
+      }
     }
   }
 }
