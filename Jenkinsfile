@@ -32,6 +32,14 @@ pipeline{
           groovy.test()
         }
       }
+      post{
+        success{
+          echo "Test is success!"
+        }
+        failure{
+          echo "Test is failed!"
+        }
+      }
     }
     stage("Deploy"){
       steps{
