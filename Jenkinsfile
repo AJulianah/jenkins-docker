@@ -21,17 +21,23 @@ pipeline{
         }
       }
       steps{
-        gv.build()
+        script{
+          gv.build()
+        }
       }
     }
     stage("Test"){
       steps{
-        gv.test()
+        script{
+          gv.test()
+        }
       }
     }
     stage("Deploy"){
       steps{
-        gv.deploy()
+        script{
+          gv.deploy()
+        }
       }
     }
   }
