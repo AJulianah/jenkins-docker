@@ -35,6 +35,7 @@ pipeline{
       post{
         success{
           echo "Test is success!"
+          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
         }
         failure{
           echo "Test is failed!"
