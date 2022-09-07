@@ -2,7 +2,7 @@ def build(){
   echo "Building"
 }
 def test(){
-  sh "groovy"
+  sh "ls"
   echo "Testing"
 }
 def deploy(){
