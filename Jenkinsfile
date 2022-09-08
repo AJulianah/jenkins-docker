@@ -30,6 +30,7 @@ pipeline{
       steps{
         script{
           groovy.test()
+          influxDbPublisher customPrefix: '', customProjectName: '', jenkinsEnvParameterField: '', jenkinsEnvParameterTag: '', selectedTarget: 'influxdb'
         }
       }
       post{
