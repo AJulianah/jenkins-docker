@@ -57,5 +57,10 @@ pipeline{
         }
       }
     }
+    stage("Send email"){
+      steps{
+        emailext attachLog: true, body: 'This is a Jenkins email body', subject: 'This is a Jenkins email subject', to: 'anjanirinajulie@gmail.com'
+      }
+    }
   }
 }
