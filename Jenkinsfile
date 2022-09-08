@@ -30,13 +30,13 @@ pipeline{
       steps{
         script{
           groovy.test()
-          influxDbPublisher customPrefix: '', customProjectName: '', jenkinsEnvParameterField: '', jenkinsEnvParameterTag: '', selectedTarget: 'influxdb'
         }
       }
       post{
         success{
           echo "Test is success!"
           archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
+          influxDbPublisher customPrefix: '', customProjectName: '', jenkinsEnvParameterField: '', jenkinsEnvParameterTag: '', selectedTarget: 'influxdb'
         }
         failure{
           echo "Test is failed!"
