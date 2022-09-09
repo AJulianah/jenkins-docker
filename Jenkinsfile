@@ -37,7 +37,6 @@ pipeline{
           echo "Test is success!"
           archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
          // influxDbPublisher(selectedTarget: 'influxdb')
-          step([$class: 'InfluxDbPublisher', selectedTarget: 'influxdb'])
         }
         failure{
           echo "Test is failed!"
@@ -59,9 +58,9 @@ pipeline{
         }
       }
     }
-    stage("Send email"){
+    stage("Publish data to influxdb"){
       steps{
-        emailext attachLog: true, from: 'anja@gmail.com',body: 'This is a Jenkins email body', subject: 'This is a Jenkins email subject', to: 'julie@gmail.com'
+        step([$class: 'InfluxDbPublisher', selectedTarget: 'influxdb'])
       }
     }
   }
