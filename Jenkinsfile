@@ -36,7 +36,8 @@ pipeline{
         success{
           echo "Test is success!"
           archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
-          influxDbPublisher customPrefix: '', customProjectName: '', jenkinsEnvParameterField: '', jenkinsEnvParameterTag: '', selectedTarget: 'influxdb'
+         // influxDbPublisher(selectedTarget: 'influxdb')
+          step([$class: 'InfluxDbPublisher', selectedTarget: 'influxdb'])
         }
         failure{
           echo "Test is failed!"
