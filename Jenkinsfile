@@ -34,10 +34,8 @@ pipeline{
       }
       post{
         success{
-          echo "Test is success!"
-          mail to: 'anjanirinajulie@gmail.com.com',
-             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+          slackSend color: 'good',
+                    message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
           
           archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
          // influxDbPublisher(selectedTarget: 'influxdb')
