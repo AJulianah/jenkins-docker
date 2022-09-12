@@ -29,7 +29,7 @@ pipeline{
     stage("Test"){
       steps{
         script{
-          groovy.test()k
+          groovy.test()
         }
       }
       post{
