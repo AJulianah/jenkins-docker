@@ -29,7 +29,7 @@ pipeline{
     stage("Test"){
       steps{
         script{
-          groovy.test()
+          groovy.test()k
         }
       }
       post{
@@ -41,7 +41,8 @@ pipeline{
          // influxDbPublisher(selectedTarget: 'influxdb')
         }
         failure{
-          echo "Test is failed!"
+          slackSend color: 'danger',
+                    message: "The pipeline ${currentBuild.fullDisplayName} is failed."
         }
       }
     }
