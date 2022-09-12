@@ -35,14 +35,14 @@ pipeline{
       post{
         success{
           slackSend color: 'good',
-                    message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+                    message: "The job ${env.JOB_NAME} #${env.BUILD_NUMBER} is completed successfully."
           
           archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
          // influxDbPublisher(selectedTarget: 'influxdb')
         }
         failure{
           slackSend color: 'danger',
-                    message: "The pipeline ${currentBuild.fullDisplayName} is failed."
+                    message: "Attention @here ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed."
         }
       }
     }
